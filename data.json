@@ -1,0 +1,349 @@
+{
+  "profile": {
+    "name": "Kazi Md. Rakibul Hassan",
+    "title": "Data Analyst / ML Engineer",
+    "bio": "Computer Science student with a strong foundation in AI, Machine Learning, and Data Analysis. Passionate about building predictive models and developing computer vision frameworks.",
+    "email": "kazrkb@gmail.com",
+    "phone": "+880 158 035 1798",
+    "location": "Dhaka, Bangladesh",
+    "linkedin": "https://linkedin.com/in/kazimdrakibulhassan",
+    "github": "https://github.com/kazrkb"
+  },
+  "skills": [
+    {
+      "category": "Data Analysis & Visualization",
+      "items": ["Excel (VLookup, Pivot Tables)", "SQL (MySQL, SQL Server)", "Python (Pandas, NumPy)", "Microsoft Power BI"]
+    },
+    {
+      "category": "Machine Learning & Deep Learning",
+      "items": ["Scikit-learn", "LightGBM", "XGBoost", "PyTorch", "TensorFlow/Keras", "YOLO"]
+    },
+    {
+      "category": "Tools & Cloud",
+      "items": ["Git", "GitHub", "AWS (EC2, VPC, Load Balancer)", "Linux/Ubuntu CLI", "LaTeX"]
+    }
+  ],
+  "experience": [
+    {
+      "role": "Undergraduate Research Assistant (URA)",
+      "company": "CCDS-MIRA Wing, IUB",
+      "location": "Dhaka",
+      "duration": "Feb 2025 - Present",
+      "details": [
+        "Conducting research on automated pulmonary nodule detection from thoracic CT scans using the LIDC-IDRI dataset.",
+        "Preprocessing and analyzing large-scale medical DICOM imaging data with advanced computer vision pipelines.",
+        "Performing exploratory data analysis on radiological annotations to evaluate inter-observer agreement."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "nodule",
+      "title": "PneumoVision: Hybrid CNN-ViT for Pneumonia Detection",
+      "year": "2026",
+      "shortDescription": "Cloud-deployed Hybrid CNN-ViT framework with Explainable AI for pneumonia detection from Chest X-Rays on AWS.",
+      "description": "A scalable, cloud-based framework for pneumonia detection using an optimized Hybrid CNN-Vision Transformer architecture deployed on AWS Free Tier.",
+      "tags": ["PyTorch", "Vision Transformer", "EfficientNet-B2", "AWS", "ONNX", "Grad-CAM"],
+      "image": "images/nodule/pipeline.png",
+      "scores": "AUC: 0.973 | F1: 0.912 | Sensitivity: 0.949 | 10.75M Params | 3.2ms Latency",
+      "codeLink": "https://github.com/kazrkb/pneumovision",
+      "projectDetails": {
+        "abstract": "Pneumonia remains a leading cause of mortality worldwide, necessitating rapid and accurate diagnostic tools. This study proposes a scalable, cloud-based framework for pneumonia detection using an optimized Hybrid CNN-Vision Transformer (CNN-ViT) architecture. The hybrid model leverages a CNN stem for local feature extraction and a multi-head self-attention Transformer encoder to capture global spatial relationships, resulting in a highly parameter-efficient model (10.75M parameters). Evaluated on a curated dataset, the proposed framework achieved an AUC of 0.973, an F1-score of 0.912, and an Average Precision of 0.970. Explainable AI (XAI) techniques, including Grad-CAM and occlusion sensitivity saliency, are used to visually highlight infected regions. The serialized ONNX model is deployed on AWS utilizing VPC, EC2 with Auto Scaling, Application Load Balancer, and S3, delivering secure, low-latency (3.2 ms/sample) inference.",
+        "problemStatement": "While deep learning models have shown promise in automating chest X-ray analysis, traditional CNNs often struggle to capture long-range global dependencies within the lung parenchyma. Additionally, opaque 'black-box' models face immense skepticism in clinical environments. A significant bottleneck in medical AI remains the transition from localized research scripts to highly available, scalable clinical tools—models constrained to local hardware offer limited utility.",
+        "methodology": {
+          "intro": "The complete pipeline proceeds from CXR acquisition through CLAHE preprocessing, Hybrid CNN-ViT inference, XAI saliency generation, and cloud-deployed result delivery via AWS infrastructure.",
+          "items": [
+            {
+              "image": "images/nodule/pipeline.png",
+              "description": "End-to-end PneumoVision pipeline: CXR acquisition, CLAHE preprocessing, Hybrid CNN-ViT inference, XAI saliency generation, and cloud-deployed result delivery via the AWS infrastructure. CLAHE is applied to the L channel of CIE LAB with clip limit 2.5 and tile grid 8×8 to enhance local contrast in lung parenchyma."
+            },
+            {
+              "image": "images/nodule/train-val-curves.png",
+              "description": "Training and validation loss/accuracy curves over 211 epochs. A pre-trained EfficientNet-B2 backbone is frozen for the first 10 epochs; upon unfreezing, a discriminative LR of 0.05× the base rate triggers a sharp improvement in validation performance. The model is optimized with AdamW (LR=3×10⁻⁵), Mixup (α=0.4), CutMix (α=1.0), and label smoothing (0.15)."
+            }
+          ]
+        },
+        "results": {
+          "intro": "The Hybrid CNN-ViT was evaluated on the held-out test set of 513 images. The model achieves high sensitivity (0.949), ensuring that the vast majority of true pneumonia cases are correctly identified.",
+          "items": [
+            {
+              "image": "images/nodule/roc-pr.png",
+              "description": "ROC curve (AUC = 0.9726) and Precision-Recall curve (AP = 0.9704) on the test set, demonstrating strong discriminative performance across the full range of classification thresholds."
+            },
+            {
+              "image": "images/nodule/saliency-normal.png",
+              "description": "Occlusion sensitivity saliency map for a Normal CXR showing minimal localized activation. The model correctly identifies the absence of pulmonary infiltrates."
+            },
+            {
+              "image": "images/nodule/saliency-pneumonia.png",
+              "description": "Saliency map for a Pneumonia CXR with warm regions highlighting pulmonary infiltrates in the upper and mid-lung zones, confirming the model attends to clinically relevant anatomy."
+            },
+            {
+              "image": "images/nodule/conf-matrix.png",
+              "description": "Confusion matrix on the test set. High sensitivity (0.949) ensures minimal false negatives—critical for a screening tool where the cost of missing a true positive far outweighs the cost of a follow-up examination."
+            }
+          ]
+        },
+        "conclusion": "This paper presented an end-to-end framework integrating a Hybrid CNN-ViT architecture (10.75M parameters, AUC: 0.973, F1: 0.912) with a cloud-deployed clinical application on AWS. CLAHE preprocessing ensures robust feature extraction, while XAI saliency maps provide interpretable visual evidence for clinical trust. The PneumoVision platform demonstrates that production-grade medical AI is achievable without significant infrastructure cost."
+      }
+    },
+    {
+      "id": "river-waste",
+      "title": "YOLO26m-CW: Robust Riverine Waste Detection",
+      "year": "2025",
+      "shortDescription": "Environment-augmented spatial attention framework for robust riverine waste monitoring using YOLO26 with Coordinate Attention.",
+      "description": "A modular detection framework built on the NMS-free YOLO26 architecture, integrating Coordinate Attention with Water-specific Augmentations for robust floating waste detection.",
+      "tags": ["Python", "PyTorch", "YOLO26", "Coordinate Attention", "Object Detection"],
+      "image": "images/river-waste/methodology-diagram.png",
+      "scores": "mmAP: 0.672 | F1: 0.859 | mAP₅₀: 0.866 | Surpassed Cascade R-CNN by +0.238",
+      "codeLink": "https://github.com/kazrkb/river-waste-yolo",
+      "projectDetails": {
+        "abstract": "Floating waste in rivers is the dominant pathway for marine pollution, yet developing intelligent monitoring systems for autonomous cleanup via Unmanned Surface Vehicles (USVs) remains constrained by the computational cost and environmental sensitivity of current detection components to sun glare, reflections, and hydrodynamic noise. This study proposes YOLO26m-CW (YOLO26m + CoordAtt + WaterAugs) as a modular detection solution. On the FloW-Img dataset, YOLO26m-CW achieves an F₁-score of 0.859, an mAP₅₀ of 0.866, and a strong mmAP of 0.672. Robustness validation across five split configurations (50-50 to 90-10) demonstrates consistent mAP₅₀ > 0.90, while fair comparison with six prior works using matched split ratios confirms the highest or competitive mAP₅₀ in every configuration.",
+        "problemStatement": "Detecting floating waste in real-world aquatic environments is highly challenging. Objects are often small and irregularly shaped, making them difficult to detect. Environmental noise—including water reflections, dynamic waves, and sun glare—significantly degrades visual quality. Standard convolutional networks further exacerbate this issue by losing critical fine-grained information during downsampling, limiting their ability to capture intricate surface features. Existing methods struggle to balance high detection accuracy with the lightweight efficiency required for real-time deployment on edge devices such as USVs.",
+        "methodology": {
+          "intro": "The proposed framework proceeds through three stages: data standardization, a sequential experimental phase (component evaluation, split sensitivity, external evaluation), and unified evaluation using seven metrics.",
+          "items": [
+            {
+              "image": "images/river-waste/methodology-diagram.png",
+              "description": "Overview of the proposed framework: (a) data input and preprocessing to 640×640 resolution, (b) experimental phases covering component evaluation on the FloW-Img 60-40 split, split sensitivity analysis across five partitions, and external evaluation on TUD-GV, UAV-BD, and MJU-Waste datasets, and (c) unified evaluation and benchmark comparison using Precision, Recall, F1, mAP₅₀, mAP₅₀₋₉₅, mmAP, and AUROC."
+            },
+            {
+              "image": "images/river-waste/model-architecture.png",
+              "description": "The YOLO26 model architecture: sequentially detailing the C3k2 blocks for hierarchical multi-scale feature extraction, the C2PSA (Cross Stage Partial with Spatial Attention) block, and the SPPF module for multi-receptive-field pooling. Coordinate Attention is integrated directly into the SPPF module, replacing standard spatial pooling with coordinate-aware attention. The anchor-free head predicts object centres and bounding box offsets directly."
+            }
+          ]
+        },
+        "results": {
+          "intro": "YOLO26m-CW achieves an mmAP of 0.672 on the FloW-Img benchmark, surpassing Cascade R-CNN at 0.434 by +0.238 and Faster R-CNN at 0.184 by +0.488. All five split configurations maintained mAP₅₀ > 0.90.",
+          "items": [
+            {
+              "image": "images/river-waste/ablation-curves.png",
+              "description": "Module evaluation on the FloW-Img 60-40 benchmark: (a) ROC curves and (b) Precision-Recall curves across all seven configurations. YOLO26m-CW (red) achieves the highest AUROC (0.871). CoordAtt improved recall (+0.018) while WaterAugs improved precision (+0.004)."
+            },
+            {
+              "image": "images/river-waste/extval-curves.png",
+              "description": "External evaluation demonstrating the performance gap across datasets: ROC curves and Precision-Recall curves. FloW-Img serves as the baseline reference, while TUD-GV, UAV-BD, and MJU-Waste quantify the strict performance penalty of non-riverine training data."
+            },
+            {
+              "image": "images/river-waste/output-glare.png",
+              "description": "Qualitative detection result: YOLO26m-CW successfully detecting floating waste under severe sun glare conditions, demonstrating the effectiveness of Water-specific Augmentations."
+            },
+            {
+              "image": "images/river-waste/output-cluster.png",
+              "description": "Detection of densely clustered waste objects in a complex riverine background, showcasing the Coordinate Attention mechanism's ability to handle small, overlapping targets."
+            }
+          ]
+        },
+        "conclusion": "YOLO26m-CW establishes itself as a robust, computationally efficient detection framework suitable for integration into real-world riverine waste monitoring systems on energy-constrained edge devices. Coordinate Attention and environment-targeted augmentations as modular components proved highly effective, and external evaluation quantified the strict performance penalty when training on alternative datasets, demonstrating the necessity of the FloW-Img dataset for real-world deployment."
+      }
+    },
+    {
+      "id": "t2dm",
+      "title": "T2DM Predictive Modeling & Fairness Analysis",
+      "year": "2025",
+      "shortDescription": "State-of-the-art LightGBM benchmarks for Type-2 Diabetes screening in Bangladesh with SHAP-based feature ablation and demographic fairness auditing.",
+      "description": "Comprehensive ML benchmarks on the Mendeley Bangladesh dataset demonstrating that a glucose-only LightGBM achieves F₁=0.981 with an 89% reduction in data requirements.",
+      "tags": ["Python", "Scikit-learn", "LightGBM", "XGBoost", "SHAP", "Fairness Analysis"],
+      "image": "images/t2dm/methodology-diagram.png",
+      "scores": "F1: 0.981±0.011 | AUC-ROC: 0.954 | 89% Data Reduction | 28% F₁ Improvement over ADA/WHO",
+      "codeLink": "https://github.com/kazrkb/t2dm-fairness",
+      "projectDetails": {
+        "abstract": "Type-2 Diabetes Mellitus (T2DM) screening in Bangladesh requires efficient, population-specific solutions. This research establishes state-of-the-art benchmarks on the novel Mendeley Bangladesh dataset (N=1,065, 79% prevalence) based on balanced 5-fold stratified cross-validation evaluation of six ML architectures: KNN, SVM, XGBoost, LightGBM, MLP, and Tabular FT-Transformer. The resultant glucose-only LightGBM yields F₁=0.981±0.011, a 28% F₁ improvement and 37-point reduction in false negatives over ADA/WHO clinical thresholds—all while providing an 89% reduction in data requirements. External validation on DiaBD (N=5,288) and Pima (N=768) indicates Recall≥0.98 in the presence of extreme prevalence shifts. The framework additionally infuses probabilistic risk stratification and comprehensive fairness auditing assuring close-to-zero demographic gaps.",
+        "problemStatement": "Two key limitations restrict the clinical applicability of many existing T2DM predictive models. First, a significant number of studies rely on historical benchmark datasets like the Pima Indians Diabetes Database, which may not reflect current demographic characteristics of regional populations. Second, enhancements in predictive accuracy have often been accomplished using highly complex deep learning models that are uninterpretable and demand excessive computational resources—transparency and efficiency critical in medical decision-making should not be sacrificed for predictive performance, especially in resource-constrained environments.",
+        "methodology": {
+          "intro": "The experimental pipeline spans raw data processing, 5-fold stratified cross-validation with strict data leakage prevention, comprehensive model evaluation across 6 architectures, and single-feature SHAP-based ablation.",
+          "items": [
+            {
+              "image": "images/t2dm/methodology-diagram.png",
+              "description": "The experimental procedure of Type-2 Diabetes prediction: data gathering from the Mendeley Bangladesh cohort (N=1,065), stratified 5-fold cross-validation with 60/20/20 train/val/test splits, comprehensive evaluation of 6 ML architectures (KNN, SVM, XGBoost, LightGBM, MLP, Tabular Transformer), and systematic single-feature ablation based on SHAP importance analysis."
+            },
+            {
+              "image": "images/t2dm/methodology-diagram.png",
+              "description": "5-Fold Stratified Cross-Validation with strict data leakage prevention: Median Imputation, Z-Score Scaling, and Dynamic Class Weighting are applied exclusively within the training fold. Six architectures are evaluated—KNN for instance-based learning, SVM with RBF kernel for non-linear decision boundaries, XGBoost and LightGBM for gradient boosting, MLP for multi-layer perceptron deep learning, and Tabular FT-Transformer for attention-based tabular modeling."
+            }
+          ]
+        },
+        "results": {
+          "intro": "The glucose-only LightGBM achieves F₁=0.981±0.011, matching the full 9-feature model while reducing data needs by 89%. Compared to ADA/WHO thresholds, false negatives are reduced from 37.6–42.6% to just 0.5%.",
+          "items": [
+            {
+              "image": "images/t2dm/shap-feature-importance.png",
+              "description": "Global SHAP Feature Importance across all six evaluated architectures. Plasma Glucose dominates the decision boundary (83–86% importance for tree-based models, 67–78% for deep learning models). The remaining 8 clinical features contribute marginal predictive utility near zero, directly motivating the glucose-only ablation study."
+            },
+            {
+              "image": "images/t2dm/roc-curves.png",
+              "description": "Average ROC Curves with 95% Confidence Intervals for the glucose-only ablation models across 5-fold cross-validation. LightGBM achieves AUC-ROC ≈ 0.954, demonstrating sustained diagnostic performance despite removal of all secondary biomarkers."
+            },
+            {
+              "image": "images/t2dm/pr-curves.png",
+              "description": "Average Precision-Recall Curves with 95% Confidence Intervals confirming that the model maintains strong Precision-Recall trade-offs even under class imbalance (79% prevalence). All glucose-only models achieve AUC-PR > 0.969."
+            }
+          ]
+        },
+        "conclusion": "LightGBM on glucose alone sets a new state-of-the-art for T2DM screening in Bangladesh, matching full 9-feature model accuracy (F₁=0.981±0.011) and reducing data needs by 89%. SHAP analysis revealed Plasma Glucose dominance (83–86% importance), and systematic ablation demonstrated that no secondary biomarker provides useful diagnostic information. The comprehensive fairness audit confirms close-to-zero diagnostic error rate across Age, BMI, and Pregnancy demographic factors."
+      }
+    },
+    {
+      "id": "supply-chain",
+      "title": "Meat Market Dynamics: Supply Chain Database",
+      "year": "2024",
+      "shortDescription": "A comprehensive digital platform design with ERD, BCNF normalization, and role-based dashboards for Bangladesh's meat supply chain.",
+      "description": "Designed a complete relational database schema and ERD to manage inventory, pricing, and stakeholder data for the meat supply chain. Executed normalization up to BCNF.",
+      "tags": ["SQL", "MySQL", "ERD", "Database Design", "BCNF", "System Analysis"],
+      "image": "images/supply-chain/to-be.png",
+      "scores": "Grade: A+ | BCNF Normalization | 10+ Entities | Role-Based Dashboards",
+      "codeLink": "https://github.com/kazrkb/meat-market-db",
+      "projectDetails": {
+        "abstract": "This study examines the complexities of the meat supply and demand system in Bangladesh, highlighting inefficiencies caused by manual data handling, fragmented information, and lack of coordination. Through a comprehensive gap analysis, we identify critical shortcomings in the existing system, including unreliable inventory tracking and inefficient stakeholder communication. To address these issues, we propose a data-driven digital platform that integrates farmers, traders, retailers, processors, and government authorities into a unified system with a centralized database to enhance transparency, optimize inventory management, and facilitate real-time decision-making.",
+        "problemStatement": "The meat market in Bangladesh is facing growing challenges that impact everyone from farmers and butchers to retailers and consumers. Prices fluctuate unpredictably, supply shortages are common, and outdated manual systems slow down the entire supply chain. Without reliable tools or data, small-scale producers struggle to compete with larger suppliers. These issues stem from a lack of centralized, real-time data—key decisions are often based on guesswork, leading to overproduction, waste, shortages, and price spikes.",
+        "methodology": {
+          "intro": "Our methodology involved designing a centralized database through systematic Entity-Relationship modeling, schema design, and rigorous normalization up to BCNF to ensure data integrity.",
+          "items": [
+            {
+              "image": "images/supply-chain/to-be.png",
+              "description": "The proposed To-Be Rich Picture: The transformation shifts the meat supply chain from a manual, fragmented process to a data-driven, transparent platform. Farmers, traders, retailers, processors, and government authorities use digital tools for real-time tracking, improving inventory management, compliance, and decision-making."
+            },
+            {
+              "image": "images/supply-chain/erd.png",
+              "description": "Entity-Relationship Diagram (ERD): The relational schema includes key tables such as CONSUMER, ORDER, DELIVERY, WAREHOUSE, VENDOR, FARM, CATTLE, MEATBATCH, and MEATPRODUCT. Relationships are defined using foreign keys, allowing seamless tracking of meat products from farms to consumers."
+            }
+          ]
+        },
+        "results": {
+          "intro": "The final database architecture successfully eliminated insertion/deletion anomalies and provides a scalable single source of truth for supply chain operations.",
+          "items": [
+            {
+              "image": "images/supply-chain/schema.png",
+              "description": "The final relational database schema implemented in MySQL. The schema organizes entities involved in production, processing, and distribution of meat products, ensuring data normalization to eliminate redundancy. Supporting tables like GDP, NUTRITIONVALUE, and MEATEXPORTIMPORT provide contextual market data."
+            },
+            {
+              "image": "images/supply-chain/normalization.png",
+              "description": "Normalization process following 1NF (atomicity), 2NF (eliminating partial dependencies), 3NF (removing transitive dependencies), and BCNF (ensuring every determinant is a candidate key). Tables like ORDER and CATTLE were decomposed to create proper relationships."
+            },
+            {
+              "image": "images/supply-chain/as-is.png",
+              "description": "The As-Is Rich Picture of the existing system: A complex, manual network involving livestock farmers, middlemen, slaughterhouses, processors, retailers and consumers. The system relies heavily on paper-based records, resulting in limited data accuracy and inefficiencies across the supply chain."
+            },
+            {
+              "image": "images/supply-chain/to-be.png",
+              "description": "The proposed digital platform eliminates inefficiencies, reduces waste, and enhances regulatory oversight. Automated processes replace unreliable manual tracking, and stakeholders gain centralized data for better market insights, leading to a more sustainable and transparent meat supply chain."
+            }
+          ]
+        },
+        "conclusion": "The highly normalized BCNF schema effectively resolved all identified data anomalies, providing a scalable single source of truth for supply chain operations. The proposed digital platform integrates all key stakeholders into a unified system, enabling real-time decision-making and transparent inventory management across Bangladesh's meat supply chain."
+      }
+    },
+    {
+      "id": "careplus",
+      "title": "CarePlus: Web-Based In-Home & Online Healthcare",
+      "year": "2025",
+      "shortDescription": "Agile Scrum-developed telemedicine platform with role-based access, video consultations, digital prescriptions, and ROI-validated financial feasibility.",
+      "description": "A comprehensive web-based healthcare platform integrating telemedicine, appointment booking, digital prescriptions, and caregiver management using PHP, MySQL, and Agile Scrum methodology.",
+      "tags": ["PHP", "MySQL", "UML", "DFD", "Agile Scrum", "System Analysis"],
+      "image": "images/system/page3_img1.png",
+      "scores": "5 User Roles | NPV: BDT 73.6M (Year 5) | Break-Even: 2.5 Years | 28 References",
+      "codeLink": "https://github.com/kazrkb/careplus",
+      "projectDetails": {
+        "abstract": "The healthcare sector continuously confronts challenges in achieving accessible, affordable, and quality care. The ecosystem contains multiple stakeholders—patients, doctors, nutritionists, physiotherapists, caregivers, and platform managers. CarePlus is a web-based platform for in-home and online healthcare services, developed using Agile Scrum methodology. The system integrates user registration, appointment booking, teleconsultations, digital prescriptions, caregiver management, and payment processing into a unified ecosystem. Developed with PHP and MySQL, styled with HTML/CSS/JavaScript, and documented with comprehensive UML diagrams including Use Case Diagrams, Data Flow Diagrams, Class Diagrams, and Deployment Diagrams.",
+        "problemStatement": "There is inadequate access to healthcare in rural and impoverished regions, congested facilities in cities, exorbitant out-of-pocket costs, and insufficient insurance that prolongs late-stage care. These matters are further aggravated by digital data privacy and security threats, low patient confidence in remote healthcare, and the elevated cost and variable quality of digital healthcare. Widespread digital illiteracy, rudimentary rural infrastructure, the vagueness of regulations, and the intricate usability of platforms create major challenges to adoption.",
+        "methodology": {
+          "intro": "The development follows Agile Scrum with phased implementation of modules: user registration, appointment booking, teleconsultation, prescription formulation, and caregiver management. UML tools capture system design.",
+          "items": [
+            {
+              "image": "images/system/page3_img1.png",
+              "description": "Rich Picture: System overview showing the interactions between all stakeholders—Patients, Doctors, Caregivers, Nutritionists, and Administrators—through the centralized CarePlus system. Includes patient registration, medical document uploads, consultation booking, prescription management, payment gateway integration, and BM&DC verification for doctors."
+            },
+            {
+              "image": "images/system/page4_img3.png",
+              "description": "Deployment Diagram: The cloud-based architecture integrating a Web Server/Hosting Platform, Cloud Server with MySQL and Authentication/Storage/Notification services, NID Server for identity verification, Client Devices (Mobile App & Web Browser), and AWS SMS Gateway for notifications—all communicating over HTTPS/SSL."
+            }
+          ]
+        },
+        "results": {
+          "intro": "The platform was validated through functional testing of all modules and a comprehensive financial feasibility analysis demonstrating positive ROI by Year 3.",
+          "items": [
+            {
+              "image": "images/system/page4_img1.png",
+              "description": "Data Flow Diagram (DFD): Detailed data flows across five core processes—Service Booking & Scheduling, Patient Service Management, Teleconsultation & Communication, Prescription & Care Planning, and Payments & Admin Panel—showing interactions between Patients, Doctors, Nutritionists, Caregivers, and the Payment Gateway."
+            },
+            {
+              "image": "images/system/page4_img2.png",
+              "description": "Use Case Diagram: Comprehensive mapping of all system functionalities organized into six packages—Patient Service, Service Booking Management, Consultation and Communication, Prescription and Care Planning, User Management, and Admin Panel & Payment—with actors including Patient, Doctor, Nutritionist, Caregiver, and Admin."
+            },
+            {
+              "image": "images/system/page5_img1.jpeg",
+              "description": "Platform UI: Caregiver Bookings interface showing available caregivers with filtering, pricing tiers (Daily/Weekly/Monthly), and booking workflow (left). Admin Dashboard displaying key metrics—Total Users, Pending Verifications, Total Appointments, Revenue—with Monthly Revenue charts and User Role Distribution (right)."
+            },
+            {
+              "image": "images/system/page5_img4.png",
+              "description": "Return on Investment (ROI): The NPV turns positive by mid-Year 3 (break-even at ~2.5 years), reaching a projected NPV of BDT 73,660,000 by Year 5—reflecting strong profitability and long-term financial viability for the CarePlus platform."
+            }
+          ]
+        },
+        "conclusion": "CarePlus addresses the challenges of in-home and online healthcare through a comprehensive, modular web-based platform developed with Agile Scrum. The system integrates telemedicine, digital prescriptions, caregiver management, and role-based dashboards into a unified ecosystem. Financial analysis confirms break-even by Year 2.5 and projected NPV of BDT 73.6M by Year 5, demonstrating strong commercial viability as a scalable digital health solution for developing nations."
+      }
+    },
+    {
+      "id": "lung-nodule",
+      "title": "Automated Pulmonary Nodule Detection [Ongoing]",
+      "year": "2026",
+      "shortDescription": "Ongoing URA research on automated lung nodule detection from thoracic CT scans using the LIDC-IDRI dataset with PyTorch.",
+      "description": "Developing an automated detection framework for medical CT DICOM images to identify lung nodules using PyTorch, as part of ongoing undergraduate research at CCDS-MIRA Wing, IUB.",
+      "tags": ["PyTorch", "Computer Vision", "DICOM", "LIDC-IDRI", "Medical Imaging"],
+      "image": "https://placehold.co/1200x500/1e1e1e/e91e63?text=Pulmonary+Nodule+Detection+%5BOngoing%5D",
+      "scores": "Status: Ongoing Research | Dataset: LIDC-IDRI | Framework: PyTorch",
+      "codeLink": "#",
+      "projectDetails": {
+        "abstract": "This ongoing research focuses on improving the accuracy of early lung cancer screening using state-of-the-art deep learning architectures on the LIDC-IDRI dataset. Lung cancer is one of the leading causes of cancer-related deaths worldwide, and early detection of pulmonary nodules significantly increases survival rates. The objective is to assist radiologists by providing a robust automated second opinion through a PyTorch-based detection framework.",
+        "problemStatement": "Manual screening of thoracic CT scans is time-consuming and prone to human error. The LIDC-IDRI dataset presents unique challenges including high inter-observer variability in radiological annotations, the need for robust DICOM preprocessing pipelines, and the difficulty of detecting small, subtle nodules against complex lung parenchyma backgrounds. Existing models often struggle with the 3D volumetric nature of CT data and the inherent class imbalance between nodule and non-nodule regions.",
+        "methodology": {
+          "intro": "The project involves extensive preprocessing of DICOM images, including noise reduction and slice normalization, followed by training a deep learning architecture with attention mechanisms.",
+          "items": [
+            {
+              "image": "https://placehold.co/600x400/eeeeee/333333?text=DICOM+Preprocessing+Pipeline",
+              "description": "The preprocessing pipeline handles raw DICOM data from the LIDC-IDRI dataset, applying Hounsfield Unit windowing, lung segmentation, and slice normalization to standardize the volumetric data before feeding it into the neural network."
+            },
+            {
+              "image": "https://placehold.co/600x400/eeeeee/333333?text=Model+Architecture+%5BIn+Development%5D",
+              "description": "The PyTorch-based model architecture utilizes both spatial and channel attention mechanisms to focus on subtle nodule features. The framework is designed to handle the 3D volumetric nature of CT scan data while maintaining computational efficiency."
+            }
+          ]
+        },
+        "results": {
+          "intro": "This project is currently in the active research phase. Preliminary results from the preprocessing and annotation analysis stages are being compiled.",
+          "items": [
+            {
+              "image": "https://placehold.co/600x400/eeeeee/333333?text=Annotation+Agreement+Analysis",
+              "description": "Exploratory data analysis on radiological annotations to evaluate inter-observer agreement across the four radiologists in the LIDC-IDRI dataset. Understanding annotation variability is critical for establishing reliable ground truth labels."
+            },
+            {
+              "image": "https://placehold.co/600x400/eeeeee/333333?text=Preliminary+Results+%5BPending%5D",
+              "description": "Model training and evaluation are currently underway. Preliminary tests show promising sensitivity, and we are planning to introduce a more complex attention mechanism for better interpretability of detected nodule regions."
+            }
+          ]
+        },
+        "conclusion": "This ongoing research at CCDS-MIRA Wing aims to develop a clinically viable automated screening tool for pulmonary nodules. The work continues to focus on optimizing the preprocessing pipeline and training the attention-based detection model on the LIDC-IDRI dataset."
+      }
+    }
+  ],
+  "education": [
+    {
+      "degree": "B.Sc. in Computer Science",
+      "institution": "Independent University, Bangladesh",
+      "duration": "Jan 2022 - April 2026",
+      "score": "CGPA: 3.51/4.00"
+    },
+    {
+      "degree": "HSC (Group: Science)",
+      "institution": "Government Science College",
+      "duration": "Jun 2018 - April 2020",
+      "score": "GPA: 5.00/5.00"
+    },
+    {
+      "degree": "SSC (Group: Science)",
+      "institution": "Lakshmipur Adarsha Samad Govt. High School",
+      "duration": "Jan 2013 - Feb 2018",
+      "score": "GPA: 5.00/5.00"
+    }
+  ]
+}

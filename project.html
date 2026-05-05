@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details | Portfolio</title>
+    
+    <!-- Google Fonts: Roboto Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* Specific styles for the project article page */
+        .project-hero {
+            width: 100%;
+            height: 50vh;
+            background-color: var(--md-surface);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 60px; /* offset navbar */
+        }
+        
+        .project-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+        }
+
+        .project-hero-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7));
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 40px;
+        }
+        
+        .hero-title-container {
+            width: 100%;
+        }
+
+        .article-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            color: #fff; /* Always white on dark overlay */
+            margin-bottom: 10px;
+        }
+        
+        .article-meta {
+            color: #ddd;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .article-section {
+            margin-bottom: 40px;
+        }
+
+        .article-section h2 {
+            font-size: 1.8rem;
+            color: var(--md-primary);
+            border-bottom: 2px solid var(--md-surface-2);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .article-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--md-on-background);
+            margin-bottom: 15px;
+        }
+        
+        .project-meta-box {
+            background-color: var(--md-surface-2);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            border-left: 4px solid var(--md-secondary);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--md-primary);
+            text-decoration: none;
+            font-weight: bold;
+            margin-bottom: 20px;
+            transition: transform 0.2s;
+        }
+        
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar elevation-2">
+        <div class="nav-content container">
+            <div class="logo">>&nbsp;kazrkb</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="project-content-wrapper" style="display:none;">
+        <!-- Hero Section -->
+        <header class="project-hero">
+            <img id="p-image" src="" alt="Project Image">
+            <div class="project-hero-overlay">
+                <div class="container hero-title-container">
+                    <h1 class="article-title" id="p-title">Loading...</h1>
+                    <div class="article-meta" id="p-meta"></div>
+                    <div class="tags" id="p-tags"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Article Content -->
+        <main class="article-container">
+            <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
+            
+            <div class="project-meta-box elevation-1">
+                <strong><i class="fa-solid fa-chart-line"></i> Performance/Score:</strong> <span id="p-scores"></span><br><br>
+                <a id="p-code" href="#" target="_blank" class="btn btn-primary"><i class="fa-brands fa-github"></i> View Source Code</a>
+            </div>
+
+            <div id="p-sections">
+                <!-- Sections populated by JS -->
+            </div>
+        </main>
+    </div>
+    
+    <div id="error-message" class="container" style="display:none; padding-top: 100px; text-align: center;">
+        <h2 style="color: var(--md-error);">Project Not Found</h2>
+        <a href="index.html" class="btn btn-primary mt-4">Return Home</a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer elevation-4">
+        <div class="container text-center">
+            <p>&copy; 2026 Kazi Md. Rakibul Hassan. Built with Vanilla JS & CSS.</p>
+        </div>
+    </footer>
+
+    <script src="project.js"></script>
+</body>
+</html>
