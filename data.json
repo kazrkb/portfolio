@@ -179,8 +179,12 @@
               "description": "Average Precision-Recall Curves with 95% Confidence Intervals confirming that the model maintains strong Precision-Recall trade-offs even under class imbalance (79% prevalence). All glucose-only models achieve AUC-PR > 0.969."
             },
             {
-              "image": "https://placehold.co/600x400/1e40af/ffffff?text=Streamlit+Web+App",
-              "description": "End-to-End Deployment: Developed and deployed a dynamic Web App using Streamlit and FastAPI. The application loads all 6 trained models (including PyTorch MLP and XGBoost) via joblib/torch, allowing clinicians to input patient metrics and receive real-time, model-specific diabetes risk assessments."
+              "image": "images/t2dm/streamlit-app-1.png",
+              "description": "End-to-End Deployment: Developed and deployed a dynamic Web App using Streamlit. The application loads all 6 trained models (KNN, SVM, XGBoost, LightGBM, PyTorch MLP, and Tabular FT-Transformer) via joblib/torch, allowing clinicians to input patient metrics and receive real-time, model-specific diabetes risk assessments. Live Demo: https://huggingface.co/spaces/kazrkb/diabetes-prediction"
+            },
+            {
+              "image": "images/t2dm/streamlit-app-2.png",
+              "description": "Prediction output interface showing the real-time risk assessment result with probability score and dynamic risk bar. The app is deployed on Hugging Face Spaces using Docker, providing free, always-on access for clinical demonstration."
             }
           ]
         },
