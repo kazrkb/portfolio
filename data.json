@@ -177,6 +177,10 @@
             {
               "image": "images/t2dm/pr-curves.png",
               "description": "Average Precision-Recall Curves with 95% Confidence Intervals confirming that the model maintains strong Precision-Recall trade-offs even under class imbalance (79% prevalence). All glucose-only models achieve AUC-PR > 0.969."
+            },
+            {
+              "image": "https://placehold.co/600x400/1e40af/ffffff?text=Streamlit+Web+App",
+              "description": "End-to-End Deployment: Developed and deployed a dynamic Web App using Streamlit and FastAPI. The application loads all 6 trained models (including PyTorch MLP and XGBoost) via joblib/torch, allowing clinicians to input patient metrics and receive real-time, model-specific diabetes risk assessments."
             }
           ]
         },
