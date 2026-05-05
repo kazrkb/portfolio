@@ -313,10 +313,59 @@ h1, h2, h3, h4 {
     transform: scale(1.05);
 }
 
+/* Contact Section */
+.contact-intro {
+    color: #555;
+    font-size: 1rem;
+    margin-bottom: 30px;
+    max-width: 600px;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.contact-card {
+    background-color: var(--md-surface);
+    padding: 30px 20px;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--md-on-surface);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-left: 4px solid var(--md-primary);
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--elevation-4);
+}
+
+.contact-card i {
+    font-size: 2rem;
+    color: var(--md-primary);
+    margin-bottom: 12px;
+}
+
+.contact-card h3 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: var(--md-on-surface);
+}
+
+.contact-card p {
+    font-size: 0.85rem;
+    color: #555;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .timeline-container { grid-template-columns: 1fr; }
     .hero-text h1 { font-size: 2.5rem; }
     .modal-content { width: 95%; margin: 10% auto; }
     .methodology-layout, .results-layout { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { gap: 10px; font-size: 0.85rem; }
 }
