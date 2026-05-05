@@ -16,11 +16,11 @@
     },
     {
       "category": "Machine Learning & Deep Learning",
-      "items": ["Scikit-learn", "LightGBM", "XGBoost", "PyTorch", "YOLO"]
+      "items": ["Scikit-learn", "LightGBM", "XGBoost", "PyTorch", "YOLO", "Streamlit"]
     },
     {
       "category": "Tools & Cloud",
-      "items": ["Git", "GitHub", "AWS (EC2, VPC, Load Balancer)", "Linux/Ubuntu CLI", "LaTeX"]
+      "items": ["Git", "GitHub", "Hugging Face", "AWS (EC2, VPC, Load Balancer)", "Linux/Ubuntu CLI", "LaTeX"]
     }
   ],
   "experience": [
