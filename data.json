@@ -16,7 +16,7 @@
     },
     {
       "category": "Machine Learning & Deep Learning",
-      "items": ["Scikit-learn", "LightGBM", "XGBoost", "PyTorch", "TensorFlow/Keras", "YOLO"]
+      "items": ["Scikit-learn", "LightGBM", "XGBoost", "PyTorch", "YOLO"]
     },
     {
       "category": "Tools & Cloud",
