@@ -16,7 +16,7 @@
     },
     {
       "category": "Machine Learning & Deep Learning",
-      "items": ["Scikit-learn", "LightGBM", "XGBoost", "PyTorch", "YOLO", "Streamlit"]
+      "items": ["Scikit-learn", "LightGBM", "XGBoost", "PyTorch", "YOLO", "Streamlit", "FastAPI"]
     },
     {
       "category": "Tools & Cloud",
