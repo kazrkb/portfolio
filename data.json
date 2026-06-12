@@ -38,6 +38,56 @@
   ],
   "projects": [
     {
+      "id": "bd-churn",
+      "title": "Bangladesh Telecom Customer Churn Analysis",
+      "year": "2026",
+      "shortDescription": "End-to-end data analytics and ML project exploring customer churn with Power BI dashboards and multi-model prediction.",
+      "description": "Analyzes 6,418 customer records from Bangladesh telecom market to identify churn drivers and predict churners using Logistic Regression, Random Forest, Gradient Boosting, and XGBoost.",
+      "tags": ["SQL", "Power BI", "Python", "Machine Learning", "XGBoost", "Data Analytics"],
+      "image": "images/bd_churn/Dsahboard1.png",
+      "scores": "Churn Rate: ~27% | 4 ML Models | 0 Missing Values",
+      "codeLink": "https://github.com/kazrkb/bd_network_churn",
+      "projectDetails": {
+        "abstract": "Customer churn is one of the biggest challenges in the telecom industry. This project analyzes 6,418 customer records from a telecom company operating across all 8 administrative divisions of Bangladesh to explore churn patterns, identify key drivers of churn, and predict which newly-joined customers are most likely to churn by comparing four ML models and selecting the best performer. The entire workflow—from raw CSV to clean data to MySQL database to Power BI dashboard to ML predictions—is fully reproducible.",
+        "problemStatement": "Retaining customers is critical for telecom companies. High churn rates directly impact revenue and profitability. Without understanding the key drivers of churn (such as contract type, tenure, or internet service type) and lacking predictive tools, telecom operators struggle to implement proactive retention strategies. This project aims to bridge that gap by providing actionable insights through interactive dashboards and identifying at-risk customers using advanced machine learning models.",
+        "methodology": {
+          "intro": "The project follows a comprehensive data pipeline consisting of Data Preprocessing in Python, Database & Exploration via SQL, Interactive Dashboard creation in Power BI, and Multi-Model Churn Prediction in Jupyter Notebook.",
+          "items": [
+            {
+              "image": "images/bd_churn/Dsahboard1.png",
+              "description": "Summary Dashboard: Overview of customer churn patterns, including total customers, churn rate, and demographic breakdowns."
+            },
+            {
+              "image": "images/bd_churn/Schema.png",
+              "description": "Project Architecture: Data flows from raw CSV through Python cleaning scripts into a MySQL Database, which feeds both the Power BI Dashboard and the Python ML Notebook."
+            }
+          ]
+        },
+        "results": {
+          "intro": "The analysis revealed a 27% churn rate, with Month-to-Month contracts having the highest churn risk. Competitor offerings were the #1 churn reason. The Gradient Boosting model emerged as a strong predictor for at-risk customers.",
+          "items": [
+            {
+              "image": "images/bd_churn/08_model_comparison.png",
+              "description": "Model Comparison: Evaluation of Logistic Regression, Random Forest, Gradient Boosting, and XGBoost based on F1 Score, Accuracy, Precision, and Recall."
+            },
+            {
+              "image": "images/bd_churn/07_roc_curves.png",
+              "description": "ROC Curves: Overlaid ROC curves and AUC scores for all four models, demonstrating their discriminative performance."
+            },
+            {
+              "image": "images/bd_churn/09_feature_importance.png",
+              "description": "Feature Importance: Top 15 features identified by the best performing model, highlighting contract type and tenure as key churn drivers."
+            },
+            {
+              "image": "images/bd_churn/Dashboard2.png",
+              "description": "Filtered Dashboard View: Deep dive into specific customer segments, such as married customers with high monthly charges."
+            }
+          ]
+        },
+        "conclusion": "The end-to-end analysis successfully mapped the Bangladesh telecom customer landscape, uncovering critical churn drivers like contract types and competitor offerings. The deployed Power BI dashboards provide business stakeholders with interactive monitoring tools, while the selected machine learning model offers a proactive mechanism to identify and retain high-risk customers, ultimately demonstrating the power of a complete data-to-insights pipeline."
+      }
+    },
+    {
       "id": "nodule",
       "title": "PneumoVision: Hybrid CNN-ViT for Pneumonia Detection",
       "year": "2026",
